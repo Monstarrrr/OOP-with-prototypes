@@ -16,11 +16,11 @@ var Player = Object.create(Hero);
 
 //Add initPlayer function to Player
 Player.initPlayer = function (name, health, strength) {
-    this.initPlayer(name, health, strength);
+    this.initHero(name, health, strength);
     this.xp = 0;
 };
 //Add description function to Player
-Player.description = function () {
+Player.describe = function () {
     var describe = this.name + " has " + this.health + " HP, " + this.strength + " SP and " + this.xp + " XP.";
     return describe;
 };
@@ -31,7 +31,7 @@ var Enemy = Object.create(Hero);
 
 //Add initEnemy function to Enemy
 Enemy.initEnemy = function (name, health, strength, breed, value) {
-    this.initPlayer(name, health, strength);
+    this.initHero(name, health, strength);
     this.breed = breed;
     this.value = value;
 };
@@ -47,13 +47,14 @@ player1.initPlayer("Kestrel", 110, 30);
 
 //Create Player 2
 var player2 = Object.create(Player);
-player1.initPlayer("Ardan", 250, 10);
+player2.initPlayer("Ardan", 250, 10);
 
 console.log("Welcome to the game! Here are our heroes :")
 console.log(player1.describe());
 console.log(player2.describe());
 
+//Create Enemy 1
 var monster = Object.create(Enemy);
 monster.initEnemy("Baron", 100, 40, "Mecha", 10);
 
-console.log("A monster show up: It's a " + monster.breed + " called " + monster.name);
+console.log("A monster show up: It's a " + monster.breed + " called " + monster.name + "!");
