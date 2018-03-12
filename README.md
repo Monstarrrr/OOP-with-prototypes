@@ -1,1 +1,1 @@
-POO Javascript
+Learning OOP Javascript: 1 Roleplay (roleplay.js) & 2 sub-programs (circle.js & account.js)

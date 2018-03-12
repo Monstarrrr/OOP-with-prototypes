@@ -11,7 +11,7 @@ var Hero = {
 };
 
 
-//Set Player as a Hero
+//Set new category of Hero called "Player"
 var Player = Object.create(Hero);
 
 //Add initPlayer function to Player
@@ -21,12 +21,12 @@ Player.initPlayer = function (name, health, strength) {
 };
 //Add description function to Player
 Player.describe = function () {
-    var describe = this.name + " has " + this.health + " HP, " + this.strength + " SP and " + this.xp + " XP.";
-    return describe;
+    var description = this.name + " has " + this.health + " HP, " + this.strength + " SP and " + this.xp + " XP.";
+    return description;
 };
 
 
-//Set Enemy as a Hero
+//Set new category of Hero called "Enemy"
 var Enemy = Object.create(Hero);
 
 //Add initEnemy function to Enemy
