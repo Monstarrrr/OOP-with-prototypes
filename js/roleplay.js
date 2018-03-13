@@ -7,6 +7,26 @@ var Hero = {
         this.health = health;
         this.strength = strength;
         this.xp = 0;
+    },
+
+    //Attack a target
+    attack: function (target) {
+
+        if (this.health > 0) {
+            var damages = this.strength;
+            console.log(this.name + " attack " + target.name + " and make " + damages + " damage points.");
+            target.health = target.health - damages;
+
+            if (target.health > 0) {
+                console.log(target.nom + " has " + target.health + " HP.");
+            } else {
+                target.health = 0;
+                console.log(target.name + " is dead !");
+            }
+
+        } else {
+            console.log(this.name + " is dead, he cannot fight.");
+        }
     }
 };
 
@@ -25,6 +45,14 @@ Player.describe = function () {
     return description;
 };
 
+//Fight an Enemy
+Player.fight = function (Enemy) {
+    this.attack(Enemy);
+    if (Enemy.health === 0) {
+        console.log(this.name + " killed " + Enemy.name + " and get " + Enemy.value + " XP.");
+        this.xp += Enemy.value;
+    }
+};
 
 //Set new category of Hero called "Enemy"
 var Enemy = Object.create(Hero);
@@ -35,7 +63,6 @@ Enemy.initEnemy = function (name, health, strength, breed, value) {
     this.breed = breed;
     this.value = value;
 };
-
 
 
 // --- //
@@ -49,7 +76,8 @@ player1.initPlayer("Kestrel", 110, 30);
 var player2 = Object.create(Player);
 player2.initPlayer("Ardan", 250, 10);
 
-console.log("Welcome to the game! Here are our heroes :")
+//Welcome Message
+console.log("Welcome to the game! Here are our heroes :");
 console.log(player1.describe());
 console.log(player2.describe());
 
@@ -58,3 +86,13 @@ var monster = Object.create(Enemy);
 monster.initEnemy("Baron", 100, 40, "Mecha", 10);
 
 console.log("A monster show up: It's a " + monster.breed + " called " + monster.name + "!");
+
+//Attacks
+monster.attack(player1);
+monster.attack(player2);
+
+player1.fight(monster);
+player2.fight(monster);
+
+console.log(player1.describe());
+console.log(player2.describe());
