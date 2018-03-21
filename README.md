@@ -1,1 +1,1 @@
-Learning OOP Javascript: 1 Roleplay (roleplay.js) & 2 sub-programs (circle.js & account.js)
+Learning OOP Javascript: 1 Roleplay (roleplay.js) && 2 sub-programs (circle.js & account.js)

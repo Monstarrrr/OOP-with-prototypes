@@ -18,7 +18,7 @@ var Hero = {
             target.health = target.health - damages;
 
             if (target.health > 0) {
-                console.log(target.nom + " has " + target.health + " HP.");
+                console.log(target.name + " has " + target.health + " HP.");
             } else {
                 target.health = 0;
                 console.log(target.name + " is dead !");
