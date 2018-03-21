@@ -7,6 +7,10 @@ var Hero = {
         this.health = health;
         this.strength = strength;
         this.xp = 0;
+        this.inventory = {
+            gold: 10,
+            keys: 1
+        };
     },
 
     //Attack a target
@@ -41,7 +45,7 @@ Player.initPlayer = function (name, health, strength) {
 };
 //Add description function to Player
 Player.describe = function () {
-    var description = this.name + " has " + this.health + " HP, " + this.strength + " SP and " + this.xp + " XP.";
+    var description = this.name + " has " + this.health + " HP, " + this.strength + " SP and " + this.xp + " XP " + this.inventory.gold + " gold and " + this.inventory.keys + " key(s).";
     return description;
 };
 
@@ -49,8 +53,10 @@ Player.describe = function () {
 Player.fight = function (Enemy) {
     this.attack(Enemy);
     if (Enemy.health === 0) {
-        console.log(this.name + " killed " + Enemy.name + " and get " + Enemy.value + " XP.");
+        console.log(this.name + " killed " + Enemy.name + " and get " + Enemy.value + " XP, " + Enemy.inventory.gold + " gold and " + Enemy.inventory.keys + " key(s).");
         this.xp += Enemy.value;
+        this.inventory.gold += Enemy.inventory.gold;
+        this.inventory.keys += Enemy.inventory.keys;
     }
 };
 
@@ -70,7 +76,7 @@ Enemy.initEnemy = function (name, health, strength, breed, value) {
 
 //Create Player 1
 var player1 = Object.create(Player);
-player1.initPlayer("Kestrel", 110, 30);
+player1.initPlayer("Kestrel", 110, 50);
 
 //Create Player 2
 var player2 = Object.create(Player);
@@ -83,7 +89,7 @@ console.log(player2.describe());
 
 //Create Enemy 1
 var monster = Object.create(Enemy);
-monster.initEnemy("Baron", 100, 40, "Mecha", 10);
+monster.initEnemy("Flicker", 60, 40, "Mecha", 10);
 
 console.log("A monster show up: It's a " + monster.breed + " called " + monster.name + "!");
 
